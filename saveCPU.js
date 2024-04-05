@@ -8,12 +8,17 @@ window.addEventListener('load', () => {
     window.scrollBy(0, -window.innerHeight);
   }, 5);
 
-  // 移除 画廊
-  const elements = document.getElementsByClassName('recommended-swipe grid-anchor');
-  const elementsArray = Array.from(elements);
-  elementsArray.forEach(element => {
-    element.remove();
+  // 移除 side ad 画廊
+  const needRemoveClassList = ['ad-report video-card-ad-small', 'recommended-swipe grid-anchor'];
+  const needRemoveArray = Array.from(needRemoveClassList);
+  needRemoveArray.forEach(needRemoveClass => {
+    const elements = document.getElementsByClassName(needRemoveClass);
+    const elementsArray = Array.from(elements);
+    elementsArray.forEach(element => {
+      element.remove();
+    });
   });
+
 
   // 创建一个MutationObserver实例
   const observer = new MutationObserver(mutationsList => {
@@ -32,8 +37,6 @@ window.addEventListener('load', () => {
             }
           });
         });
-
-
       }
     }
   });
