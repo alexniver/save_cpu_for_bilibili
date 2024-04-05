@@ -1,3 +1,2 @@
-# save_cpu_for_bilibili
 ## bilibili网页版, 减少cpu利用率
-进网页版cpu首页，cpu直接干满，测试发现是 首页的banner导致的，写个chrome插件, 进bilibili首页直接删除banner
+进网页版cpu首页，cpu直接干满，测试发现如果向下一页滑动一下，cpu的占用率就正常了，这里用插件模拟一下。

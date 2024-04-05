@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Save Cpu for Bilibili",
+  "version": "1.0",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://www.bilibili.com/*"],
+      "js": ["saveCPU.js"]
+    }
+  ]
+}
