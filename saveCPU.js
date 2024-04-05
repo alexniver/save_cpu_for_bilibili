@@ -15,8 +15,23 @@ window.addEventListener('load', () => {
     element.remove();
   });
 
-  // 移除广告
-  removeNthParentNodesWithClass("bili-video-card__info--ad", 6);
+  // 创建一个MutationObserver实例
+  const observer = new MutationObserver(mutationsList => {
+    for (let mutation of mutationsList) {
+      if (mutation.type === 'childList' || mutation.type === 'characterData') {
+        // 移除广告
+        removeNthParentNodesWithClass("bili-video-card__info--ad", 6);
+      }
+    }
+  });
+  // 配置观察选项
+  const config = { childList: true, subtree: true, characterData: true };
+  const layout_elements = document.querySelectorAll('.win');
+  layout_elements.forEach(element => {
+    // 用MutationObserver实例开始观察目标节点
+    observer.observe(element, config);
+  });
+
 });
 
 // 找到一个子元素的第七个父节点并删除它
