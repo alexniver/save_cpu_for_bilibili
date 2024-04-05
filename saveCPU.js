@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   }, 5);
 
   // 查找所有具有特定类名的元素
-  const elements = document.getElementsByClassName('recommended-swipe-body');
+  const elements = document.getElementsByClassName('recommended-swipe grid-anchor');
 
   // 将HTMLCollection转换为数组，以便使用forEach方法
   const elementsArray = Array.from(elements);
