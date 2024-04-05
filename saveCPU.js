@@ -20,7 +20,20 @@ window.addEventListener('load', () => {
     for (let mutation of mutationsList) {
       if (mutation.type === 'childList' || mutation.type === 'characterData') {
         // 移除广告
-        removeNthParentNodesWithClass("bili-video-card__info--ad", 6);
+        const needRemoveAdList = ["feed-card", "bili-video-card is-rcmd"]
+        // 或者使用forEach方法遍历数组
+        needRemoveAdList.forEach(needRemoveAd => {
+          const cards = document.getElementsByClassName(needRemoveAd); // 查找所有具有特定class的元素
+          const cardsArray = Array.from(cards);
+          cardsArray.forEach(element => {
+            // 查找子结点中是否有 bili-video-card__info--ad
+            if (element.querySelectorAll('.bili-video-card__info--ad').length > 0) {
+              element.remove();
+            }
+          });
+        });
+
+
       }
     }
   });
@@ -33,29 +46,3 @@ window.addEventListener('load', () => {
   });
 
 });
-
-// 找到一个子元素的第七个父节点并删除它
-function removeNthParentOfChild(childElement, n) {
-  let parent = childElement.parentElement;
-  for (let i = 0; i < n; i++) {
-    if (parent === null) {
-      return; // 如果父节点不存在，直接返回
-    }
-    parent = parent.parentElement; // 循环找到第七个父节点
-  }
-  if (parent !== null) {
-    parent.remove(); // 删除第七个父节点
-  }
-}
-
-
-// 查找所有具有特定class的子元素，并删除其父节点
-function removeNthParentNodesWithClass(className, n) {
-  const elements = document.querySelectorAll('.' + className); // 查找所有具有特定class的元素
-  elements.forEach(element => {
-    // 删除父节点
-    removeNthParentOfChild(element, n);
-  });
-}
-
-
