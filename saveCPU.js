@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
   // 等待一段时间后，再向上滑动
   setTimeout(() => {
     window.scrollBy(0, -window.innerHeight);
-  }, 5);
+  }, 50);
 
   // 移除 side ad 画廊
   const needRemoveClassList = ['ad-report video-card-ad-small', 'recommended-swipe grid-anchor'];
