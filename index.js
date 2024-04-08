@@ -29,14 +29,14 @@ window.addEventListener('load', () => {
     for (let mutation of mutationsList) {
       if (mutation.type === 'childList' || mutation.type === 'characterData') {
         // 移除广告
-        const needRemoveAdList = ["feed-card", "bili-video-card is-rcmd"]
+        const needRemoveAdList = ["feed-card", "bili-video-card is-rcmd", "floor-single-card"]
         // 或者使用forEach方法遍历数组
         needRemoveAdList.forEach(needRemoveAd => {
           const cards = document.getElementsByClassName(needRemoveAd); // 查找所有具有特定class的元素
           const cardsArray = Array.from(cards);
           cardsArray.forEach(element => {
             // 查找子结点中是否有 bili-video-card__info--ad
-            if (element.querySelectorAll('.bili-video-card__info--ad').length > 0) {
+            if (element.querySelectorAll('.bili-video-card__info--ad').length > 0 || element.querySelectorAll('.living').length > 0) {
               element.remove();
             }
           });
