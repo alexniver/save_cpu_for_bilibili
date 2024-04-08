@@ -5,8 +5,13 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["*://www.bilibili.com/*"],
-      "js": ["saveCPU.js"]
+      "matches": ["https://www.bilibili.com/"],
+      "js": ["index.js"]
+    },
+    {
+      "matches": ["https://www.bilibili.com/video/*"],
+      "js": ["video.js"]
     }
+
   ]
 }

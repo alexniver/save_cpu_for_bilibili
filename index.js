@@ -1,23 +1,27 @@
 // 在页面加载完成后执行
 window.addEventListener('load', () => {
-  // 页面加载完成后，先向下滑动
-  window.scrollBy(0, window.innerHeight);
-
-  // 等待一段时间后，再向上滑动
   setTimeout(() => {
-    window.scrollBy(0, -window.innerHeight);
-  }, 50);
+    // 页面加载完成后，先向下滑动
+    window.scrollBy(0, window.innerHeight);
+  }, 200);
 
-  // 移除 side ad 画廊
-  const needRemoveClassList = ['ad-report video-card-ad-small', 'recommended-swipe grid-anchor'];
-  const needRemoveArray = Array.from(needRemoveClassList);
-  needRemoveArray.forEach(needRemoveClass => {
-    const elements = document.getElementsByClassName(needRemoveClass);
-    const elementsArray = Array.from(elements);
-    elementsArray.forEach(element => {
-      element.remove();
+  setTimeout(() => {
+    // 等待一段时间后，再向上滑动
+    window.scrollBy(0, -window.innerHeight);
+  }, 600);
+
+  setTimeout(() => {
+    // 移除 side ad 画廊
+    const needRemoveClassList = ['recommended-swipe grid-anchor'];
+    const needRemoveArray = Array.from(needRemoveClassList);
+    needRemoveArray.forEach(needRemoveClass => {
+      const elements = document.getElementsByClassName(needRemoveClass);
+      const elementsArray = Array.from(elements);
+      elementsArray.forEach(element => {
+        element.remove();
+      });
     });
-  });
+  }, 800);
 
 
   // 创建一个MutationObserver实例
